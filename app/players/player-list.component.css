@@ -1,0 +1,98 @@
+thead{
+    color: #337AB7;
+}
+
+body{
+    border:none;
+}
+
+.panel-heading{
+    width:100%;
+    border: none;
+    height: 60px;
+}
+
+
+.panel-primary{
+    border:none;
+}
+
+.panel-body{
+    width:100%;
+    border: none;
+}
+.leftPanel{
+   width: 55%;
+    border: none;
+    float: left;
+} 
+
+.rightPanel{
+   width: 45%;
+   border: none;
+   float: left;
+}
+
+#rowspace{
+    height:50px;
+}
+
+#playersTable{
+ /* table-layout: fixed;*/
+  /*   width:  60%;*/
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+li{
+    color: white
+}
+
+th{
+    text-align: center;
+    vertical-align: center;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 40px;
+}
+
+td{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+     
+}
+
+tr{
+    vertical-align: center;
+    vertical-align: middle;
+    height: 15px;
+}
+/*
+playerFilters{
+    width:  15%;
+}*/
+
+tr#nameCol{
+    width: 20%
+}
+tr#teamCol{
+    width: 5%
+}
+tr#posCol{
+    width: 5%
+}
+tr#ptsCol{
+    width: 5%
+}
+tr#ttlCol{
+    width: 5%
+}
+tr#addCol{
+    width: 5%
+}
+.scrollingTable {
+            display: inline-block;
+            overflow-y: scroll;
+            max-height:600px;
+        }

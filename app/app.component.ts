@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
+import { HomeComponent }  from './home/home.component';
+
 
 @Component({
-    selector: 'my-app',
-    template: '<h1>My First Angular App</h1>'
+    selector: 'nfl-app',
+    template: `<div><h1> {{pageTitle}} </h1>
+    <home-app></home-app>
+    </div>`
 })
-export class AppComponent { }
+export class AppComponent { pageTitle: string = 'NFL Suicide League'}

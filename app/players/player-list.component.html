@@ -1,0 +1,119 @@
+<!--  <div class='panel panel-primary'>
+   <div class='panel-heading'>
+          <ul class="list-inline">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Overall</a></li>
+                <li><a href="#">Scores</a></li>
+                <li><a href="#">Team</a></li>
+          </ul>
+    </div>  -->
+<div class='panel panel-primary'>
+   <!-- Filter the Products   -->
+
+<div class='panel-body'>
+
+        <div style='height:30px' *ngIf='!nameFilter && !teamFilter && !positionFilter'>
+            </div>
+   <div class='row' >
+            <div class='col-xs-2' *ngIf='nameFilter'>
+                <h3>Filtered by Name: {{nameFilter}} </h3>
+            </div>
+             <div class='col-xs-2' *ngIf='positionFilter'>
+                <h3>Filtered by Position: {{positionFilter}} </h3>
+            </div>
+			<div class='col-xs-2' *ngIf='teamFilter'>
+                <h3>Filtered by Team: {{teamFilter}} </h3>
+            </div>
+			
+         </div>
+</div>  <!-- panel-body div (contains filters and Filtered By)  -->
+
+
+  </div> 
+ <div class='leftPanel'>
+     <div class='panel panel-primary'>
+       
+     
+<modal-confirm></modal-confirm>
+<body onload='makeTableScroll();'>
+<div class='scrollingTable' > 
+    <table id='playersTable' resizeable mode="resizeMode" class='table table-striped table-bordered table-condensed' >
+                <thead>
+                    <tr>
+                        <th>
+                        <input class='form-control' type='text' [(ngModel)]='nameFilter' placeholder='Name'/>
+                        </th>
+                        <th><select class='form-control' name ="position" form = "positionForm" [(ngModel)]='positionFilter' placeholder="Position" default = "">
+                    <option value="" disabled selected>Position</option>
+                    <option value="">All</option>
+                    <option value="OFF">All Offense</option>
+                    <option value="QB">Quarterback</option>
+                    <option value="RB">Running Back</option>
+                    <option value="WR">Wide Receiver</option>
+                    <option value="TE">Tight End</option>
+                    <option value="Flex">Flex (W/R/T)</option>
+                    <option value="DEF">Team Defense</option>
+                </select>  </th>
+                        <th><input class='form-control' type='text' [(ngModel)]='teamFilter' placeholder='Team'/></th>
+                        <th></th>
+                        <th></th>
+                        <th><button class='btn btn-success' (click)='onClickrefreshPlayerList()'>
+                                Refresh
+                            </button></th>
+                    </tr>
+                    <tr>
+                        <th id="nameCol" ></th>
+                        <th id="posCol" >Position</th>
+                        <th id="teamCol" >Team</th>
+                        <th id="ptsCol" >Week 1 Points</th>
+                        <th id="ttlCol" >Season Points</th>
+                        <th id="blkCol" ></th>
+                    </tr>
+                </thead>           
+                <tbody>
+               <tr *ngFor="let player of offense | playerFilter:nameFilter:teamFilter:positionFilter">
+                   <td id="nameCol" class="col-xs-2" style="text-align:center">{{player.name}}</td>
+                    <td id="posCol" class="col-xs-1" style="text-align:center">{{player.position}}</td>
+                    <td id="teamCol" class="col-xs-1" style="text-align:center">{{player.teamAbbr}}</td>   
+                    <td id="ptsCol" class="col-xs-1" style="text-align:center">{{player.weekPts}}</td>
+                    <td id="ttlCol" class="col-xs-1" style="text-align:center">{{player.seasonPts}}</td>
+                    <td id="addCol" class="col-xs-1" style="text-align:center"><button class='btn btn-success' (playerAdded)='onAddPlayer($event, player.id)'>Add</button></td>
+                 </tr> 
+                
+                </tbody>
+               </table>
+               <div class= 'panel-heading' *ngIf= 'loading && (!players || players.length < 1)'>
+                      Retrieving Players...
+                   </div>   
+               <div class= 'panel-heading' *ngIf='errorMessage'>
+                      There was a problem retrieving Players.  Error Code: {{errorMessage}}
+                   </div>  
+                <div class= 'panel-heading' *ngIf='(!players || players.length < 1) && !errorMessage && !loading'>
+                      There is no data for the chosen dates
+                   </div>  
+           </div> <!-- this is the table-responsive wrapper-->  
+        </body>
+     </div> 
+  </div>   <!-- End Left Panel -->
+    <div class='rightPanel'>
+        <div class='panel panel-primary'>
+            <div id='rowspace' class='row'></div>
+        <nfl-squad></nfl-squad>
+        </div> 
+    </div> 
+      <br style="clear:both;"/>
+      
+          <!--      <div align="right">
+                <button id='retryBtn' class='btn btn-primary' (click)='showConfirmDialog("ReleaseRetry")'> Release Checked Retry Items</button>
+                <button id='utilityBtn' class='btn btn-primary' (click)='showConfirmDialog("DataUtilities")' > Run Selected Data Utilities </button>
+              <button id='closeBtn' class='btn btn-danger' (click)='onClickClose()' > Close </button> 
+                </div
+                
+                >-->
+                
+
+  
+
+
+<!--</div>-->
+
