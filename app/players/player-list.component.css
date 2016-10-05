@@ -1,9 +1,26 @@
 thead{
     color: #337AB7;
 }
-
+/*
 body{
-    border:none;
+    
+    background-color: white; 
+}*/
+
+.tableContainer{
+ background-color: white; 
+ border:2px solid #d3d3d3;
+ border-radius: 5px;
+}
+
+.filters{
+    border: none;
+    background-color: transparent;
+}
+
+#filterTable{
+  border: none;
+    background-color: transparent;
 }
 
 .panel-heading{
@@ -20,21 +37,6 @@ body{
 .panel-body{
     width:100%;
     border: none;
-}
-.leftPanel{
-   width: 55%;
-    border: none;
-    float: left;
-} 
-
-.rightPanel{
-   width: 45%;
-   border: none;
-   float: left;
-}
-
-#rowspace{
-    height:50px;
 }
 
 #playersTable{
@@ -68,10 +70,7 @@ tr{
     vertical-align: middle;
     height: 15px;
 }
-/*
-playerFilters{
-    width:  15%;
-}*/
+
 
 tr#nameCol{
     width: 20%

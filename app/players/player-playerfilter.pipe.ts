@@ -6,7 +6,7 @@ import {IPlayer} from './player';
 })
 
 export class PlayerFilterPipe implements PipeTransform{
-                transform(value:IPlayer[], argName:any, argTeam:any, argPos:any): IPlayer[]{
+                transform(value:IPlayer[], argName:string, argTeam:string, argPos:string): IPlayer[]{
                     let namefilter: string = argName ? argName.toLocaleLowerCase(): null;
                     let teamfilter: string = argTeam ? argTeam.toLocaleLowerCase(): null;
                     let positionfilter: string = argPos ? argPos.toLocaleLowerCase(): null;

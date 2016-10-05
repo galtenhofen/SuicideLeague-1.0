@@ -1,25 +1,25 @@
 import {IPlayer} from './player';
 import {IResponse} from './response';
 import {ILoadInfo} from './loadInfo';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {PlayerFilterPipe} from './player-playerfilter.pipe';
 import {BrowserModule} from '@angular/platform-browser';
 //import {SquadComponent} from '../squad/squad.component';
 import {PlayerService} from './player.service';
+import {CreateTeamService} from '../create/create-team.service';
 //import {ConfirmService} from '../shared/confirm/confirm.service';
 //import {ConfirmComponent} from '../shared/confirm/confirm.component';
 import { Routes, RouterModule } from '@angular/router';
 //import { WindowService } from "../windowservice/window.service";
 
 
-declare var componentHandler:any;
+//declare var componentHandler:any;
 
 @Component({
 moduleId: module.id,
 selector: 'player-app',
-templateUrl: '../players/player-list.component.html',
-styleUrls: ['../players/player-list.component.css'],
-providers: [PlayerService]
+templateUrl: 'player-list.component.html',
+styleUrls: ['player-list.component.css']
 
 })
 
@@ -27,7 +27,7 @@ providers: [PlayerService]
 
 export class PlayerListComponent
                 implements OnInit{
-    pageTitle: string = 'NFL Suicide Bowl';
+    
     nameFilter: string = '';
     positionFilter: string = '';
     teamFilter: string = '';
@@ -47,8 +47,10 @@ export class PlayerListComponent
     confirmResponse:string = '';
     loading: boolean = false;
    
+     @Output() addPlayer: EventEmitter<IPlayer> =
+                             new EventEmitter<IPlayer>();
 
-constructor(private _playerService: PlayerService){
+constructor(private _playerService: PlayerService, private _createTeamService: CreateTeamService){
     this.loading = this._playerService.loading;
 
 }
@@ -57,7 +59,7 @@ constructor(private _playerService: PlayerService){
     ngOnInit(): any{
     console.log('IN  OnInit');
      
-     componentHandler.upgradeDom();
+     //componentHandler.upgradeDom();
   
 this.loading = true;
           this._playerService.getResponse()
@@ -68,19 +70,6 @@ this.loading = true;
                     () => (this.onRequestComplete()));
 
 
-     //this.beginDate = this.formatDate(new Date());
-    // this.endDate = this.formatDate(new Date());
-/*
-    console.log('Retrieving Player List...');
-    this.players = [];
-    this.loading=true;
-      this._playerService.getPlayers()
-                .subscribe(
-                    players => this.players = players,
-                    error => this.errorMessage = <any>erro
-                    r,
-                    () => this.onRequestComplete());
-*/
     }
 /*
  showConfirmDialog(stringTitle) {
@@ -156,7 +145,7 @@ onClickrefreshPlayerList(): void{
                     //() => (this.loading = this._orfileService.loading));
                     () => (this.onRequestComplete()));
 
-        console.log('Leaving onClickrefreshPlayerList  this.players: ' + this.players);            
+        //console.log('Leaving onClickrefreshPlayerList  this.players: ' + this.players);            
       //  }
       //  else{
       //      alert('You entered a begin date ('+this.beginDate+') that is after the end date ('+this.endDate+ ') and that makes no sense.');
@@ -192,48 +181,7 @@ onClickrefreshPlayerList(): void{
     }
 
 */
-/*  ORIGINAL
 
-    onToggleRetry(ordfgId, checked, processStep, providerId): void{
-        console.log('Retry button clicked.  ORDataFileGroupId: ' + ordfgId + '  Current value = ' + checked + '  Step: ' + processStep);
-        
-        if(checked == true){
-        this.retryList.push(ordfgId,processStep);
-        console.log('retryList: ' + this.retryList);
-        }
-        else{
-           var removeIndex = this.retryList.indexOf(ordfgId);
-           this.retryList.splice(removeIndex,2)
-           console.log('retryList: ' + this.retryList);
-        }
-    }*/
-/*
-    onClickReleaseRetry(): void{
-        console.log('Release Retry Items');
-        console.log('utilityList: ' + this.utilityList);
-
-        if(this.utilityList.length < 0){
-
-        }
-        else{
-        this._orfileService.postReleaseRetry(this.retryObjects)
-                .subscribe(
-                    data => this.postRetries = JSON.stringify(data), 
-                    error => this.errorMessage = <any>error);
-        }
-    }
-
-    onClickRunDataUtilities(): void{
-        console.log('IN onClickRunDataUtilties  ');
-        console.log('utilityList: ' + this.utilityList);
-
-
-        this._orfileService.postRunUtilities(this.utilityObjects)
-                .subscribe(
-                    data => this.postDataUtilities = JSON.stringify(data), 
-                    error => this.errorMessage = <any>error);
-    }
-*/
     onClickClose(): void{
         console.log('Close App');
         if(confirm('You wanna close the app?')){
@@ -242,71 +190,14 @@ onClickrefreshPlayerList(): void{
         
     }
 
-    onClickAddPlayer(playerId:any): void{
+    onClickAddPlayer(player:IPlayer): void{
     console.log('Entering onClickAddPlayer');
 
-
+    this._createTeamService.addPlayer(player);
 
     console.log('Leaving onClickAddPlayer');
     }
-/*
-    onChangeDateReceivedFrom(selectedDate): void{
-        console.log('Changed Date Received From.  Setting this.beginDate');
-        console.log('Selected Date: ' + selectedDate);
-       // this.beginDate = selectedDate.toString();
-        console.log('Begin Date: ' + this.beginDate);
-       // var beginString: string = ((this.beginDate).getFullYear()).toString() + "/" + ((this.beginDate).getMonth()).toString() + "/" + ((this.beginDate).getDay()).toString();
-        //console.log('beginString: ' + beginString);
 
-    }
-
-    onChangeDateReceivedTo(selectedDate): void{
-        console.log('Changed Date Received To');
-     //   this.endDate = selectedDate.toString();
-        //var endString: string = ((this.endDate).getFullYear()).toString() + "/" + ((this.endDate).getMonth()).toString() + "/" + ((this.endDate).getDay()).toString();        
-        console.log('End Date: ' + this.endDate);
-    }
-
-  onUtilitySelected(message:string, ordfgId, providerId): void{
-         console.log('IN onUtilitySelected  orfile-list component ');
-         console.log('IN onUtilitySelected  message: ' + message);
-        console.log('IN onUtilitySelected  ORDataFileGroupId: ' + ordfgId + '  ProviderId: ' + providerId  );
-
-         if(message == '2' || message == '3'){
-
-            //var existIndex = this.utilityList.indexOf("orDataFileGroupId:"+ordfgId);
-            
-            console.log('IN onUtilitySelected  ORDataFileGroupId : '+ ordfgId + ' exists in arraty at position ' + existIndex);
-            
-            if(existIndex > -1){
-                this.utilityList.splice(existIndex,3)
-                console.log('IN onUtilitySelected utilityList: ' + this.utilityList);
-                }
-    
-                if(message == '2'){   
-                    this.utilityList.push(ordfgId, providerId, "unconvert"); 
-                    //this.utilityList.push("orDataFileGroupId:"+ordfgId, "providerId:"+providerId, "type:unconvert");
-                }
-                else if(message == '3'){
-                    this.utilityList.push(ordfgId, providerId, "purgeAll"); 
-                   // this.utilityList.push("orDataFileGroupId:"+ordfgId, "providerId:"+providerId, "type:purgeAll");
-                }
-             console.log('IN onUtilitySelected utilityList: ' + this.utilityList);
-    
-        }
-        else{
-            var existIndex = this.utilityList.indexOf("orDataFileGroupId:"+ordfgId);
-            console.log('IN onUtilitySelected  ORDataFileGroupId : '+ ordfgId + ' exists in arraty at position ' + existIndex);
-            if(existIndex > -1){
-                this.utilityList.splice(existIndex,3)
-                console.log('IN onUtilitySelected utilityList: ' + this.utilityList);
-            }
-            else{
-            console.log('IN onUtilitySelected  NO UTILITY CHOSEN: ');
-            console.log('IN onUtilitySelected utilityList: ' + this.utilityList);
-       	    }
-        }
-    }*/
 
 /*
     onUtilitySelected(message:string, ordfgId, providerId): void{
@@ -336,36 +227,7 @@ onClickrefreshPlayerList(): void{
     this.canEnableButtons();   
     }*/
 
-    formatDate(dateToFormat:Date): string{
-        var dayNum:number = dateToFormat.getDate();
-        var monthNum:number = dateToFormat.getMonth();
-        var dayString:string;
-        var monthString:string;
 
-        if(dayNum < 10)
-            {dayString = '0'+ dayNum.toString()}
-        else 
-            {dayString = dayNum.toString()}
-        if(monthNum < 10)
-            {monthString = '0' + (monthNum + 1).toString()}
-        else
-            {monthString = monthNum.toString()}
-
-        console.log('IN  formatDate : ' + dateToFormat.getFullYear().toString() +"-"+monthString+"-"+dayString);
-
-        return (dateToFormat.getFullYear().toString() +"-"+monthString+"-"+dayString)
-
-    }
-
-    buildRunUtility(utilityList:any[]){
-        var jsonData = {};
-
-    }
-/*
-    containsObject(ordfgid){
-        if (this.utilityList.filter(function(e){return e.orDataFileGroupId == ordfgid}).length>0) {
-        }
-    }*/
 
     showOrFileDetail(){
         console.log('IN  showOrFileDetail');
@@ -376,12 +238,6 @@ onClickrefreshPlayerList(): void{
     this.offense = [];
 
      this.offense = this.players.filter(player => player.position != "DB" && player.position != "DL" && player.position != "LB");
-
-    //this.canEnableButtons();
-    //this.enableButtons();
-    console.log('Leaving  onRequestComplete  this.players: ' + JSON.stringify(this.players));
-
-    //console.log('Leaving  onRequestComplete  this.response.players: ' + JSON.stringify(this.response.players));
 
     }
 /*

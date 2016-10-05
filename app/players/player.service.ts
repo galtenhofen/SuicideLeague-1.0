@@ -30,7 +30,7 @@ export class PlayerService{
                      return this._http.get(this._playerUrl) 
                     .finally( () => this.loading = false)
                     .map((response: Response) => <IPlayer[]>response.json())
-                    .do(data => console.log("IN getPlayers:  " + JSON.stringify(data)))
+                    //.do(data => console.log("IN getPlayers:  " + JSON.stringify(data)))
                     .catch(this.throwStatus)
                     
 

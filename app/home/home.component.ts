@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import 'rxjs/Rx';  //Load all features
 import {BrowserModule} from '@angular/platform-browser';
-import {Routes, RouterModule} from '@angular/router';
 import {PlayerListComponent}  from '../players/player-list.component';
-
+import {Router} from '@angular/router';
 
 @Component({
      moduleId: module.id,
@@ -14,5 +13,13 @@ import {PlayerListComponent}  from '../players/player-list.component';
 
 })
 export class HomeComponent {
-    public pageTitle: string = "Suicide League";
+
+       constructor(private router: Router) {}
+
+gotoCreate(): void {
+  let link = ['/create'];
+  this.router.navigate(link);
+}
+
+
 }

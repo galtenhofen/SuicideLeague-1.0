@@ -1,0 +1,51 @@
+<div class='notPanel'>
+    <div class='alsoNotPanel'>
+
+          <ul class="tabrow">
+                
+                <li class="" (click)="gotoHome()" >Home</li>
+                <li class="selected" >Create Team</li>
+                  <li class="">Results</li>
+                  <li class="">Leaderboard</li>
+                  
+          </ul>
+
+
+    </div>
+</div>
+<!--
+    <div class='panel-body'>
+
+        <div style='height:30px' *ngIf='!nameFilter && !teamFilter && !positionFilter'>
+            </div>
+   <div class='row' >
+            <div class='col-xs-2' *ngIf='nameFilter'>
+                <h3>Filtered by Name: {{nameFilter}} </h3>
+            </div>
+             <div class='col-xs-2' *ngIf='positionFilter'>
+                <h3>Filtered by Position: {{positionFilter}} </h3>
+            </div>
+			<div class='col-xs-2' *ngIf='teamFilter'>
+                <h3>Filtered by Team: {{teamFilter}} </h3>
+            </div>
+			
+         </div>
+</div>   panel-body div (contains filters and Filtered By)  -->
+ <div class='mainDiv' id="background">
+ 
+ <div class='leftPanel'>
+    <!-- <div class='nothing'>  -->
+         <player-app></player-app>
+    <!-- </div>-->
+ </div>
+
+  <div class='rightPanel'>
+        <div class='nothing'>
+            <div id='rowspace' class='row'></div>
+        <nfl-squad></nfl-squad>
+        </div> 
+    </div> 
+      <br style="clear:both;"/>
+</div> 
+
+
