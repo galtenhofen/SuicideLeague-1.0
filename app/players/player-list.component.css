@@ -1,11 +1,11 @@
 thead{
     color: #337AB7;
+    border-color: transparent;
 }
-/*
+
 body{
-    
-    background-color: white; 
-}*/
+ margin-top: 50px;
+}
 
 .tableContainer{
  background-color: white; 
@@ -13,16 +13,31 @@ body{
  border-radius: 5px;
 }
 
+.tableNoBorders{
+    border:none;
+}
+
 .filters{
-    border: none;
+    border-color: transparent;
     background-color: transparent;
+    margin-bottom: 20px;
 }
 
 #filterTable{
-  border: none;
-    background-color: transparent;
+  border-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
 }
 
+#filterTable th{
+padding: 10px;
+}
+
+#topRow{
+    border-color: transparent;
+    box-sizing: unset;
+}
+/*
 .panel-heading{
     width:100%;
     border: none;
@@ -38,7 +53,7 @@ body{
     width:100%;
     border: none;
 }
-
+*/
 #playersTable{
  /* table-layout: fixed;*/
   /*   width:  60%;*/
@@ -50,12 +65,14 @@ li{
     color: white
 }
 
+
 th{
     text-align: center;
     vertical-align: center;
     vertical-align: middle;
     height: 40px;
     line-height: 40px;
+
 }
 
 td{

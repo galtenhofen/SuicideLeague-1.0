@@ -3,10 +3,10 @@
 <body onload='makeTableScroll();'>
 
 <div class='filters' > 
-    <table id='filterTable' resizeable mode="resizeMode" class='table table-condensed' >
+    <table id='filterTable' class='tableNoBorders' >
                 <thead id="topFilters">
 
-                    <tr>
+                    <tr id="topRow">
                         <th>
                         <input class='form-control' type='text' [(ngModel)]='nameFilter' placeholder='Name'/>
                         </th>

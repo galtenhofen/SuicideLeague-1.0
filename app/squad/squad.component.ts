@@ -62,6 +62,11 @@ this.addedPlayer = null;
    
   }
 
+  onSubmitTeam(): void{
+        alert('Nice Team, asshole.')
+   
+  }
+
        /* makeTableScroll() {
             var maxRows = 5;
 
