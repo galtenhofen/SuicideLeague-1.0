@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISquad } from './squad';
 import { IPlayer } from '../players/player';
 import {CreateTeamService} from '../create/create-team.service';
@@ -10,7 +10,7 @@ import { Subscription }   from 'rxjs/Subscription';
   templateUrl: 'squad.component.html',
   styleUrls: ['squad.component.css']
 })
-export class SquadComponent implements OnChanges {
+export class SquadComponent implements OnInit {
     addedPlayer: IPlayer; 
     subscription: Subscription;
     squad: ISquad;
@@ -40,6 +40,14 @@ this.addedPlayer = null;
     });
 
   }
+ngOnInit(): any{
+    console.log('IN  OnInit');
+     
+    this.canEnableSubmit();
+
+    }
+
+  
 
        buildSquad(player:IPlayer): void{
         console.log('IN buildSquad' + player);
@@ -96,14 +104,10 @@ this.addedPlayer = null;
         else{
             console.log('Leaving buildSquad  PLAYER ALREADY CHOSEN');
         }
+        this.canEnableSubmit();
    console.log('Leaving buildSquad  currentSquadIDS:' + this.currentSquadIDS);
   } 
-  
-  ngOnChanges(): void {
-    console.log('IN ngOnChanges');
-
-      }
-
+ 
 
    onClickRemovePlayer(pos:string, pid:string): void{
 
@@ -137,7 +141,7 @@ this.addedPlayer = null;
          if(pos == "D"){
             this.DEF = null;
          }
-   
+   this.canEnableSubmit();
   }
 
   removeFromArray(pid:string): void{
@@ -158,6 +162,27 @@ var index = this.currentSquadIDS.indexOf(pid);
         alert('Nice Team, asshole');
    
   }
+
+  canEnableSubmit(): void{
+      if(this.QB != null && this.RB1 != null && this.RB2 != null && this.WR1 != null && this.WR2 != null && this.WR3 != null && this.TE != null && this.FLX != null && this.DEF != null){
+        (<HTMLInputElement> document.getElementById('submitTeamBtn')).disabled = false;
+      }
+      else{
+          (<HTMLInputElement> document.getElementById('submitTeamBtn')).disabled = true;
+      }
+  }
+
+/*
+    disableButtons(){
+        (<HTMLInputElement> document.getElementById('retryBtn')).disabled = true;
+ 
+    }
+
+    enableButtons(){
+        
+        (<HTMLInputElement> document.getElementById('retryBtn')).disabled = false;
+
+    }*/
 
        /* makeTableScroll() {
             var maxRows = 5;

@@ -79,12 +79,14 @@
   background: grey;
   display: inline-block;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: normal;
+    cursor:pointer;
 }
 
 .tabrow li.selected {
   background: #FFF;
   color: #000;
+  font-weight: bold;
 }
 
 .tabrow {
@@ -110,7 +112,7 @@
 }
 .tabrow li.selected {
   z-index: 2;
-  /*border-bottom-color: #FFF;*/
+
 }
 
 .tabrow li:before,
