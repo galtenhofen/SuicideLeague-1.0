@@ -24,5 +24,15 @@ gotoHome(): void {
   this.router.navigate(link);
 }
 
+gotoResults(): void {
+  let link = ['/results'];
+  this.router.navigate(link);
+}
+
+gotoLeaderboard(): void {
+  let link = ['/leaderboard'];
+  this.router.navigate(link);
+}
+
 
 }

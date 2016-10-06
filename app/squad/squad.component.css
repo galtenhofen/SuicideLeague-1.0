@@ -6,10 +6,20 @@ thead{
     vertical-align: middle;
 }
 
+tbody{
+font-size: 16px;
+vertical-align: middle;
+}
+
 body{
-    
+    margin-top: 75px;
     background-color: white; 
     
+}
+
+.btn-danger{
+    line-height: 10px;
+width: 50px;
 }
 
 .tableContainer{

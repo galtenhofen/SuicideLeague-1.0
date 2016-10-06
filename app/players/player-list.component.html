@@ -24,40 +24,33 @@
                         <th><input class='form-control' type='text' [(ngModel)]='teamFilter' placeholder='Team'/></th>
                         <th></th>
                         <th></th>
-                        <th><button class='btn btn-success' (click)='onClickrefreshPlayerList()'>
+                        <th>
+                            
+                            <!--<button class='btn btn-success' (click)='onClickrefreshPlayerList()'>
                                 Refresh
-                            </button></th>
+                            </button>-->
+                            </th>
                     </tr>
 
 </thead>
 </table>
 </div>
 <div class='tableContainer' >
-<div class='scrollingTable' > 
+
+     <div class= 'panel-heading' *ngIf= 'loading && (!players || players.length < 1)'>
+                      <h1 style='text-align:center'>Retrieving Players...</h1>
+                   </div>   
+               <div class= 'panel-heading' *ngIf='errorMessage'>
+                     <h1 style='text-align:center'> There was a problem retrieving Players.  Error Code: {{errorMessage}}</h1>
+                   </div>  
+               <!--<div class= 'panel-heading' *ngIf='(!players || players.length < 1) && !errorMessage && !loading'>
+                      There is no data for the chosen dates
+                   </div>-->  
+
+<div class='scrollingTable' *ngIf='players && (players.length>0) && !loading'> 
     <table id='playersTable' resizeable mode="resizeMode" class='table table-hover table-condensed' >
                 <thead>
-                <!--   <tr>
-                        <th>
-                        <input class='form-control' type='text' [(ngModel)]='nameFilter' placeholder='Name'/>
-                        </th>
-                        <th><select class='form-control' name ="position" form = "positionForm" [(ngModel)]='positionFilter' placeholder="Position" default = "">
-                    <option value="" disabled selected>Position</option>
-                    <option value="">All</option>
-                    <option value="OFF">All Offense</option>
-                    <option value="QB">Quarterback</option>
-                    <option value="RB">Running Back</option>
-                    <option value="WR">Wide Receiver</option>
-                    <option value="TE">Tight End</option>
-                    <option value="Flex">Flex (W/R/T)</option>
-                    <option value="DEF">Team Defense</option>
-                </select>  </th>
-                        <th><input class='form-control' type='text' [(ngModel)]='teamFilter' placeholder='Team'/></th>
-                        <th></th>
-                        <th></th>
-                        <th><button class='btn btn-success' (click)='onClickrefreshPlayerList()'>
-                                Refresh
-                            </button></th>
-                    </tr>-->
+    
                     <tr>
                         <th id="nameCol" ></th>
                         <th id="posCol" >Position</th>
@@ -66,8 +59,8 @@
                         <th id="ttlCol" >Season Points</th>
                         <th id="blkCol" ></th>
                     </tr>
-                </thead>           
-                <tbody>
+                </thead> 
+<tbody>
                <tr *ngFor="let player of offense | playerFilter:nameFilter:teamFilter:positionFilter">
                    <td id="nameCol" class="col-xs-2" style="text-align:center">{{player.name}}</td>
                     <td id="posCol" class="col-xs-1" style="text-align:center">{{player.position}}</td>
@@ -76,18 +69,10 @@
                     <td id="ttlCol" class="col-xs-1" style="text-align:center">{{player.seasonPts}}</td>
                     <td id="addCol" class="col-xs-1" style="text-align:center"><button class='btn btn-success' (click)="onClickAddPlayer(player)">Add</button></td>
                  </tr> 
-                
-                </tbody>
+               
+</tbody>
                </table>
-               <div class= 'panel-heading' *ngIf= 'loading && (!players || players.length < 1)'>
-                      Retrieving Players...
-                   </div>   
-               <div class= 'panel-heading' *ngIf='errorMessage'>
-                      There was a problem retrieving Players.  Error Code: {{errorMessage}}
-                   </div>  
-                <div class= 'panel-heading' *ngIf='(!players || players.length < 1) && !errorMessage && !loading'>
-                      There is no data for the chosen dates
-                   </div>  
+              
            </div> <!-- this is the table-responsive wrapper-->  
       </div> 
        

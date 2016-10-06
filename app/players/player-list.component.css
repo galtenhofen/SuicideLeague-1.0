@@ -3,8 +3,19 @@ thead{
     border-color: transparent;
 }
 
+tbody{
+font-size: 16px;
+vertical-align: middle;
+
+}
+
 body{
  margin-top: 50px;
+}
+
+.btn-success{
+    line-height: 10px;
+width: 75px;
 }
 
 .tableContainer{
@@ -68,7 +79,6 @@ li{
 
 th{
     text-align: center;
-    vertical-align: center;
     vertical-align: middle;
     height: 40px;
     line-height: 40px;
@@ -79,13 +89,13 @@ td{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-     
+    vertical-align: middle;
+    max-height:30px; 
 }
 
 tr{
-    vertical-align: center;
     vertical-align: middle;
-    height: 15px;
+    /*height: 15px;*/
 }
 
 

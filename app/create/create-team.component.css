@@ -134,7 +134,11 @@
 .tabrow li {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
+
+/*
 .tabrow li:before {
   border-bottom-right-radius: 6px;
   border-width: 0 1px 1px 0;
@@ -163,7 +167,7 @@
 }
 .tabrow li.selected:after {
   box-shadow: -2px 2px 0 #FFF;
-}
+}*/
 
 .tabrow li {
   background: linear-gradient(to bottom, #ECECEC 50%, #D1D1D1 100%);
