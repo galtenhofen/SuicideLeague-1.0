@@ -1,0 +1,75 @@
+
+thead{
+    color: #337AB7;
+    text-align: center;
+    vertical-align: center;
+    vertical-align: middle;
+}
+
+.totalPoints{
+    color: #337AB7;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.totalPointsNum{
+    color: #337AB7;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: center;
+}
+
+tbody{
+font-size: 16px;
+vertical-align: middle;
+}
+
+body{
+    margin-top: 75px;
+    background-color: white; 
+    
+}
+
+.btn-danger{
+    line-height: 10px;
+width: 50px;
+}
+
+.tableContainer{
+    border:2px solid #d3d3d3;
+    border-radius: 5px;
+ background-color: white; 
+}
+
+th{
+    text-align: center;
+    vertical-align: center;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 40px;
+}
+
+td{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+     
+}
+
+tr{
+    vertical-align: center;
+    vertical-align: middle;
+    height: 15px;
+}
+
+#entryTable{
+ /* table-layout: fixed;*/
+  /*   width:  60%;*/
+    border-collapse: collapse;
+    white-space: nowrap;
+    max-height:500px;
+}
+

@@ -154,33 +154,6 @@ onClickrefreshPlayerList(): void{
 
     console.log('Leaving onClickrefreshPlayerList  this.loading: ' + this.loading);
     }
-/*
-     onToggleRetry(ordfgId, checked, processStep, providerId): void{
-        console.log('Retry button clicked.  ORDataFileGroupId: ' + ordfgId + '  Current value = ' + checked + '  Step: ' + processStep + '  ProviderId: ' + providerId);
-        
-       this.retry = {"orDataFileGroupId": ordfgId, "providerId": providerId, "step": processStep, "userName" : "galtenhofen"   };
-
-        if(checked == true){
-        this.retryObjects.push(this.retry);
-        console.log('retryObj: ' + this.retryObjects);
-        console.log('stringify retryObj: ' + JSON.stringify(this.retryObjects));
-        }
-        else{
-
-            for(var i = 0; i <  this.retryObjects.length; i++) {
-                if( this.retryObjects[i].orDataFileGroupId == ordfgId) {
-                     this.retryObjects.splice(i, 1);
-                    break;
-                    }
-        }
-          
-          console.log('stringify retryObj: ' + JSON.stringify(this.retryObjects));
-        }
-
-        this.canEnableButtons();    
-    }
-
-*/
 
     onClickClose(): void{
         console.log('Close App');
@@ -199,36 +172,6 @@ onClickrefreshPlayerList(): void{
     }
 
 
-/*
-    onUtilitySelected(message:string, ordfgId, providerId): void{
-         console.log('IN onUtilitySelected  orfile-list component ');
-         console.log('IN onUtilitySelected  message: ' + message);
-         console.log('IN onUtilitySelected  ORDataFileGroupId: ' + ordfgId + '  ProviderId: ' + providerId  );
-        var type: string;
-
-        if(message == '2'){type = 'unconvert'}
-        else if(message == '3'){type = 'purgeAll'}
-        else{type = ''}
-
-        this.utility = {"orDataFileGroupId": ordfgId, "providerId": providerId, "step": type, "userName" : "galtenhofen"  };
-
-             for(var i = 0; i <  this.utilityObjects.length; i++) {
-                if( this.utilityObjects[i].orDataFileGroupId == ordfgId) {
-                     this.utilityObjects.splice(i, 1);
-                    break;
-                    }
-                }
-
-        if(message == '2' || message == '3'){
-            this.utilityObjects.push(this.utility);
-            console.log('retryObj: ' + this.retryObjects);
-            console.log('stringify retryObj: ' + JSON.stringify(this.utilityObjects)); 
-        }
-    this.canEnableButtons();   
-    }*/
-
-
-
     showOrFileDetail(){
         console.log('IN  showOrFileDetail');
     }
@@ -240,21 +183,6 @@ onClickrefreshPlayerList(): void{
      this.offense = this.players.filter(player => player.position != "DB" && player.position != "DL" && player.position != "LB");
 
     }
-/*
-    canEnableButtons(){
-    if(!this.retryObjects || this.retryObjects.length < 1 ){
-            (<HTMLInputElement> document.getElementById('retryBtn')).disabled = true;
-        }
-        else{
-            (<HTMLInputElement> document.getElementById('retryBtn')).disabled = false;
-        }
-     if(!this.utilityObjects || this.utilityObjects.length < 1 ){
-            (<HTMLInputElement> document.getElementById('utilityBtn')).disabled = true;
-        }
-        else{
-            (<HTMLInputElement> document.getElementById('utilityBtn')).disabled = false;
-        }    
-    }*/
 
     disableButtons(){
         (<HTMLInputElement> document.getElementById('retryBtn')).disabled = true;

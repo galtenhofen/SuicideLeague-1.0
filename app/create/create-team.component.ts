@@ -3,7 +3,7 @@ import {HttpModule} from '@angular/http';
 import 'rxjs/Rx';  //Load all features
 import {BrowserModule} from '@angular/platform-browser';
 import {Router} from '@angular/router';
-//import {PlayerListComponent}  from '../players/player-list.component';
+
 
 @Component({
      moduleId: module.id,

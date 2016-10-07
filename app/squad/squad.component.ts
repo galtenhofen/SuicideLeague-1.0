@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISquad } from './squad';
 import { IPlayer } from '../players/player';
 import {CreateTeamService} from '../create/create-team.service';
+import {AppService} from '../app.service';
 import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
@@ -26,7 +27,10 @@ export class SquadComponent implements OnInit {
     DEF: IPlayer;
     currentSquadIDS:string[] = [];
 
-  constructor(private _createTeamService: CreateTeamService) {
+    @Output() addSquad: EventEmitter<ISquad> =
+                             new EventEmitter<ISquad>();
+
+  constructor(private _createTeamService: CreateTeamService, private _appService: AppService) {
    
 this.addedPlayer = null;
 
@@ -158,9 +162,26 @@ var index = this.currentSquadIDS.indexOf(pid);
    
   }
 
-  onSubmitTeam(): void{
-        alert('Nice Team, asshole');
-   
+  onSubmitTeam(squad:ISquad): void{
+        console.log('Nice Team, dipshit');
+    this.squad = {
+        week: 5, 
+        user: "admin",
+        id: "admin-5-2016",
+        QB: this.QB,
+        RB1: this.RB1,
+        RB2: this.RB2,
+        WR1: this.WR1,
+        WR2: this.WR2,
+        WR3: this.WR3,
+        TE: this.TE,
+        FLX: this.FLX,
+        DEF: this.DEF
+        }    
+
+this._appService.addSquad(this.squad);
+     console.log('Your Team: ' + JSON.stringify(this.squad));
+
   }
 
   canEnableSubmit(): void{

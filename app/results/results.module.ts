@@ -4,9 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ResultsComponent }  from './results.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { routing } from '../app.routing';
+import { EntryModule }  from '../entry/entry.module';
 
 @NgModule({
-  imports: [ BrowserModule, HttpModule, JsonpModule, FormsModule],
+  imports: [ BrowserModule, HttpModule, JsonpModule, FormsModule, EntryModule],
   declarations: [ResultsComponent],
   exports: [ResultsComponent]
 

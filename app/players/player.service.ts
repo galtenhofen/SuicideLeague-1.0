@@ -9,7 +9,7 @@ import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class PlayerService{
         //private _orfileUrl = 'http://crp12vdtib03:8080/ORWorkflow/service';
-        private _playerUrl = 'http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2016&week=2&format=json';
+        private _playerUrl = 'http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2016&week=5&format=json';
         
          private _playerTest = '../../api/players/players.json';
        
