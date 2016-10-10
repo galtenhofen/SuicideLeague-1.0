@@ -37,9 +37,6 @@ this.addedPlayer = null;
   this.subscription = _createTeamService.addPlayer$.subscribe(
      player => { 
          this.buildSquad(player);
-         /*if(player.position == "QB" && this.QB == null){
-             this.QB = player;
-         }*/
 
     });
 
@@ -98,8 +95,16 @@ ngOnInit(): any{
                     this.FLX= player;
                 }
          }
-         else if(player.position == "TE" && this.TE == null){
-             this.TE = player;
+         else if(player.position == "TE"){
+               if(this.TE ==null)
+                {
+                    this.TE = player;
+                }
+             
+                else if(this.FLX ==null)
+                {
+                    this.FLX= player;
+                }
          }
          if(player.position == "DEF" && this.DEF == null){
              this.DEF = player;
@@ -163,7 +168,7 @@ var index = this.currentSquadIDS.indexOf(pid);
   }
 
   onSubmitTeam(squad:ISquad): void{
-        console.log('Nice Team, dipshit');
+        console.log('IN onSubmitTeam.....Nice Team, dipshit');
     this.squad = {
         week: 5, 
         user: "admin",
@@ -180,7 +185,9 @@ var index = this.currentSquadIDS.indexOf(pid);
         }    
 
 this._appService.addSquad(this.squad);
-     console.log('Your Team: ' + JSON.stringify(this.squad));
+
+
+     //console.log('Your Team: ' + JSON.stringify(this.squad));
 
   }
 

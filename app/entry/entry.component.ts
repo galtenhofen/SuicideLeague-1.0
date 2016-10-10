@@ -15,28 +15,14 @@ export class EntryComponent implements OnInit {
     subscription: Subscription;
     addedSquad: ISquad;
 
-
-    /*players: IPlayer[] = [];
-    QB: IPlayer;
-    RB1: IPlayer;
-    RB2: IPlayer;
-    WR1: IPlayer;
-    WR2: IPlayer;
-    WR3: IPlayer;
-    TE: IPlayer;
-    FLX: IPlayer;
-    DEF: IPlayer;
-    currentSquadIDS:string[] = [];*/
-
   constructor(private _appService: AppService) {
    
 this.addedSquad = null;
 
   this.subscription = _appService.addSquad$.subscribe(
-     squad=> { this.addedSquad;
-         //this.addEntry(squad);
-    });
-
+     squad=> { 
+       this.addEntry(squad);
+  });
   }
 ngOnInit(): any{
     console.log('IN  OnInit');
@@ -44,9 +30,9 @@ ngOnInit(): any{
     }
 
  addEntry(squad:ISquad): void{
-        console.log('IN addEntry' + squad);
         console.log('IN addEntry  SQUAD: '+ JSON.stringify(squad));
-
+        this.addedSquad = squad;
+        console.log('IN addEntry  this.addedSquad: '+ JSON.stringify(this.addedSquad));
  }
 
 }

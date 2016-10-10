@@ -17,7 +17,7 @@ export class AppService {
      // console.log('Adding Player: '+ JSON.stringify(player));
     this.addedSquad.next(squad);
 
-    console.log('addedSquad: '+ this.addedSquad);
+    console.log('IN AppService  addedSquad: '+ JSON.stringify(squad));
   }
  
 

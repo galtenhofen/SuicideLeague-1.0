@@ -6,6 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { routing } from '../app.routing';
 import { EntryModule }  from '../entry/entry.module';
 
+
 @NgModule({
   imports: [ BrowserModule, HttpModule, JsonpModule, FormsModule, EntryModule],
   declarations: [ResultsComponent],

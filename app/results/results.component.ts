@@ -4,6 +4,7 @@ import 'rxjs/Rx';  //Load all features
 import {BrowserModule} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 
+
 @Component({
      moduleId: module.id,
      selector: 'results-app',

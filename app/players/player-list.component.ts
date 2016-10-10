@@ -36,7 +36,7 @@ export class PlayerListComponent
     beginDate: string;
     endDate: string;
     currentORFileGroupId: string;
-    players: IPlayer[];
+    players: IPlayer[]=[];
     offense: IPlayer[];
     response: IResponse;
     retryList: any[] = [];
@@ -60,7 +60,9 @@ constructor(private _playerService: PlayerService, private _createTeamService: C
     console.log('IN  OnInit');
      
      //componentHandler.upgradeDom();
-  
+console.log('IN  OnInit  this.players.length: ' +this.players.length);
+
+  //if(this.players.length <= 0){
 this.loading = true;
           this._playerService.getResponse()
                 .subscribe(
@@ -68,7 +70,10 @@ this.loading = true;
                     error => this.errorMessage = <any>error,
                     //() => (this.loading = this._orfileService.loading));
                     () => (this.onRequestComplete()));
-
+  //}
+  //else{
+    //  console.log('IN  OnInit  Player List Already Populated.');
+  //}
 
     }
 /*

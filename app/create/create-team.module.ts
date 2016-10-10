@@ -11,6 +11,7 @@ import { PlayerListModule }  from '../players/player-list.module';
 import { SquadModule }  from '../squad/squad.module';
 import { routing } from '../app.routing';
 
+
 @NgModule({
   imports: [ BrowserModule, HttpModule, JsonpModule, FormsModule, PlayerListModule, SquadModule, routing ],
   declarations: [CreateTeamComponent],
