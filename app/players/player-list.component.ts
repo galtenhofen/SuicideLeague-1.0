@@ -6,10 +6,10 @@ import {PlayerFilterPipe} from './player-playerfilter.pipe';
 import {BrowserModule} from '@angular/platform-browser';
 //import {SquadComponent} from '../squad/squad.component';
 import {PlayerService} from './player.service';
-import {CreateTeamService} from '../create/create-team.service';
+import {HomeService} from '../home/home.service';
 //import {ConfirmService} from '../shared/confirm/confirm.service';
 //import {ConfirmComponent} from '../shared/confirm/confirm.component';
-import { Routes, RouterModule } from '@angular/router';
+//import { Routes, RouterModule } from '@angular/router';
 //import { WindowService } from "../windowservice/window.service";
 
 
@@ -50,8 +50,8 @@ export class PlayerListComponent
      @Output() addPlayer: EventEmitter<IPlayer> =
                              new EventEmitter<IPlayer>();
 
-constructor(private _playerService: PlayerService, private _createTeamService: CreateTeamService){
-    this.loading = this._playerService.loading;
+constructor(private _homeService: HomeService){
+    this.loading = this._homeService.loading;
 
 }
 
@@ -64,7 +64,7 @@ console.log('IN  OnInit  this.players.length: ' +this.players.length);
 
   //if(this.players.length <= 0){
 this.loading = true;
-          this._playerService.getResponse()
+          this._homeService.getResponse()
                 .subscribe(
                     response => this.players = response.players,
                     error => this.errorMessage = <any>error,
@@ -119,7 +119,7 @@ onClickrefreshPlayerList(): void{
       //  if (run == true){
           //this.players = [];
             this.loading = true;
-          this._playerService.getResponse()
+          this._homeService.getResponse()
                 .subscribe(
                     response => this.players = response.players,
                     error => this.errorMessage = <any>error,
@@ -137,29 +137,7 @@ onClickrefreshPlayerList(): void{
     }
 
 
-    onClickrefreshPlayerList2(): void{
-        this.disableButtons();
-      //var run:boolean = this.validateReceivedDates(this.beginDate, this.endDate);
-      //  if (run == true){
-            this.players = [];
-            this.loading = true;
-          this._playerService.getPlayers()
-                .subscribe(
-                    players => this.players = players,
-                    error => this.errorMessage = <any>error,
-                    //() => (this.loading = this._orfileService.loading));
-                    () => (this.onRequestComplete()));
-
-        //console.log('Leaving onClickrefreshPlayerList  this.players: ' + this.players);            
-      //  }
-      //  else{
-      //      alert('You entered a begin date ('+this.beginDate+') that is after the end date ('+this.endDate+ ') and that makes no sense.');
-      //      console.log('You fucked up the dates');
-     //   }
-
-    console.log('Leaving onClickrefreshPlayerList  this.loading: ' + this.loading);
-    }
-
+  
     onClickClose(): void{
         console.log('Close App');
         if(confirm('You wanna close the app?')){
@@ -171,7 +149,7 @@ onClickrefreshPlayerList(): void{
     onClickAddPlayer(player:IPlayer): void{
     console.log('Entering onClickAddPlayer');
 
-    this._createTeamService.addPlayer(player);
+    this._homeService.addPlayer(player);
 
     console.log('Leaving onClickAddPlayer');
     }
@@ -182,7 +160,7 @@ onClickrefreshPlayerList(): void{
     }
 
     onRequestComplete(){
-    this.loading = this._playerService.loading;
+    this.loading = this._homeService.loading;
     this.offense = [];
 
      this.offense = this.players.filter(player => player.position != "DB" && player.position != "DL" && player.position != "LB");

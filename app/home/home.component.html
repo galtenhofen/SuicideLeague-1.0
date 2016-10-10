@@ -3,13 +3,35 @@
     <div class='alsoNotPanel'>
 
           <ul class="tabrow">
+                <!-- <li><button class = "tabBtn" id="HomeBtn" type="button" (click)="updateView('Home')">Home</button></li>
+                <li><button class = "tabBtn" id="CreateBtn" type="button" (click)="updateView('Create')">Create Team</button></li>
+                  <li><button class = "tabBtn" id="ResultsBtn" type="button" (click)="updateView('Results')">Results</button></li>
+                  <li><button class = "tabBtn" id="LeaderboardBtn" type="button" (click)="updateView('Leaderboard')">Leaderboard</button></li>
+                 -->
                 
-                <li class="selected">Home</li>
-                <li class="" (click)="gotoCreate()" >Create Team</li>
-                  <li class="" (click)="gotoResults()">Results</li>
-                  <li class="" (click)="gotoLeaderboard()">Leaderboard</li>
+                <li [ngClass]="highlightHome" (click)="updateHome()" >Home</li>
+                <li [ngClass]="highlightCreate" (click)="updateCreate()" >Create Team</li>
+                  <li [ngClass]="highlightResults"  (click)="updateResults()">Results</li>
+                  <li [ngClass]="highlightLeader"  (click)="updateLeaderboard()">Leaderboard</li>
                   
           </ul>
     </div>
      
 </div>
+
+ <div class='mainDiv' *ngIf="viewController == 'Create'">
+ 
+ <div class='leftPanel'>
+         <player-app></player-app>
+ </div>
+
+  <div class='rightPanel'>
+        <div class='nothing'>
+            <div id='rowspace' class='row'></div>
+        <nfl-squad></nfl-squad>
+        </div> 
+    </div> 
+      <br style="clear:both;"/>
+</div> 
+
+

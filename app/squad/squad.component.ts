@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISquad } from './squad';
 import { IPlayer } from '../players/player';
-import {CreateTeamService} from '../create/create-team.service';
-import {AppService} from '../app.service';
+import {HomeService} from '../home/home.service';
+//import {AppService} from '../app.service';
 import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
@@ -30,11 +30,11 @@ export class SquadComponent implements OnInit {
     @Output() addSquad: EventEmitter<ISquad> =
                              new EventEmitter<ISquad>();
 
-  constructor(private _createTeamService: CreateTeamService, private _appService: AppService) {
+  constructor(private _homeService: HomeService) {
    
 this.addedPlayer = null;
 
-  this.subscription = _createTeamService.addPlayer$.subscribe(
+  this.subscription = _homeService.addPlayer$.subscribe(
      player => { 
          this.buildSquad(player);
 
@@ -184,7 +184,7 @@ var index = this.currentSquadIDS.indexOf(pid);
         DEF: this.DEF
         }    
 
-this._appService.addSquad(this.squad);
+this._homeService.addSquad(this.squad);
 
 
      //console.log('Your Team: ' + JSON.stringify(this.squad));
@@ -200,32 +200,5 @@ this._appService.addSquad(this.squad);
       }
   }
 
-/*
-    disableButtons(){
-        (<HTMLInputElement> document.getElementById('retryBtn')).disabled = true;
- 
-    }
-
-    enableButtons(){
-        
-        (<HTMLInputElement> document.getElementById('retryBtn')).disabled = false;
-
-    }*/
-
-       /* makeTableScroll() {
-            var maxRows = 5;
-
-            var table: any = (<HTMLInputElement>document.getElementById('squadTable')).value;
-            var wrapper: any = (<HTMLInputElement>document.getElementById('squadTable')).parentNode;
-            //var wrapper = table.parentNode;
-            var rowsInTable = table.rows.length;
-            var height = 0;
-            if (rowsInTable > maxRows) {
-                for (var i = 0; i < maxRows; i++) {
-                    height += table.rows[i].clientHeight;
-                }
-                wrapper.style.height = height + "px";
-            }
-        }*/
 
 }

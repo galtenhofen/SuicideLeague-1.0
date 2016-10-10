@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+/*import { NgModule }      from '@angular/core';
 import { FormsModule }      from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CreateTeamComponent }  from '../create/create-team.component';
@@ -20,3 +20,4 @@ import { routing } from '../app.routing';
 
 })
 export class CreateTeamModule { }
+*/

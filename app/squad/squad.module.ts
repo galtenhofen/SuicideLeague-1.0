@@ -3,7 +3,7 @@ import { FormsModule }      from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { SquadComponent }  from '../squad/squad.component';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { routing } from '../app.routing';
+
 
 
 @NgModule({

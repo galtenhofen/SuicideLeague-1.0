@@ -1,10 +1,11 @@
+/*
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent }      from './home/home.component';
 import { ResultsComponent }      from './results/results.component';
 import { LeaderboardComponent }      from './leaderboard/leaderboard.component';
-import { CreateTeamComponent }      from './create/create-team.component';
+
 
 const appRoutes: Routes = [
   {
@@ -31,4 +32,4 @@ const appRoutes: Routes = [
   
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);*/

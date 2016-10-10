@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
 import {ISquad} from './squad/squad';
 
@@ -21,4 +21,4 @@ export class AppService {
   }
  
 
-}
+}*/

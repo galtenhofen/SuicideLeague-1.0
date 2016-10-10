@@ -11,11 +11,11 @@ h2, h3 {
 }
 body { 
   /*margin: 2em; */
-  height: auto;
+  height:auto;
   min-height: 100%;
   border:none;
 
-   background: url(app/assets/stadium.jpg) no-repeat center center fixed;
+  background: url(app/assets/stadium.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

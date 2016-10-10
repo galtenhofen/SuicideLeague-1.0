@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { PlayerListComponent }  from '../players/player-list.component';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {PlayerFilterPipe} from '../players/player-playerfilter.pipe';
-import { routing } from '../app.routing';
 import {PlayerService} from '../players/player.service';
 
 @NgModule({

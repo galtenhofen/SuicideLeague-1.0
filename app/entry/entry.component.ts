@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISquad } from '../squad/squad';
 import { IPlayer } from '../players/player';
-import {AppService} from '../app.service';
+import {HomeService} from '../home/home.service';
 import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
@@ -15,11 +15,11 @@ export class EntryComponent implements OnInit {
     subscription: Subscription;
     addedSquad: ISquad;
 
-  constructor(private _appService: AppService) {
+  constructor(private _homeService: HomeService) {
    
 this.addedSquad = null;
 
-  this.subscription = _appService.addSquad$.subscribe(
+  this.subscription = _homeService.addSquad$.subscribe(
      squad=> { 
        this.addEntry(squad);
   });
