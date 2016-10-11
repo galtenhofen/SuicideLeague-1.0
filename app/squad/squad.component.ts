@@ -26,7 +26,8 @@ export class SquadComponent implements OnInit {
     FLX: IPlayer;
     DEF: IPlayer;
     currentSquadIDS:string[] = [];
-
+    currentEntry:ISquad;
+    submitted:boolean = false;
 
   constructor(private _homeService: HomeService) {
    
@@ -41,12 +42,30 @@ this.addedPlayer = null;
   }
 ngOnInit(): any{
     console.log('IN  OnInit');
+    this.getCurrentEntry();
      
+
     this.canEnableSubmit();
 
     }
 
-  
+  getCurrentEntry(){
+      this.currentEntry=this._homeService.getEntry();
+      if(this.currentEntry!=null){
+      this.QB = this.currentEntry.QB;
+      this.RB1 = this.currentEntry.RB1;
+      this.RB2 = this.currentEntry.RB2;
+      this.WR1 = this.currentEntry.WR1;
+      this.WR2 = this.currentEntry.WR2;
+      this.WR3 = this.currentEntry.WR3;
+      this.TE = this.currentEntry.TE;
+      this.FLX = this.currentEntry.FLX;
+      this.DEF = this.currentEntry.DEF;
+      }
+      else{
+          this.submitted = false;
+      }
+  }
 
        buildSquad(player:IPlayer): void{
         console.log('IN buildSquad' + player);
@@ -117,6 +136,7 @@ ngOnInit(): any{
  
 
    onClickRemovePlayer(pos:string, pid:string): void{
+    console.log('IN onClickRemovePlayer PlayerId:' + pid);
 
        this.removeFromArray(pid);
 
@@ -152,12 +172,17 @@ ngOnInit(): any{
   }
 
   removeFromArray(pid:string): void{
-var index = this.currentSquadIDS.indexOf(pid);
-  if(index){  
-    this.currentSquadIDS.splice(index, 1);
-  }
-  console.log('Leaving   removeFromArray:' + this.currentSquadIDS);
-  }
+        console.log('Entering removeFromArray  PlayerID: ' + pid);
+        var index = this.currentSquadIDS.indexOf(pid);
+
+console.log('IN removeFromArray  Found player at index: ' + index);
+
+        if(index > -1){  
+                
+                this.currentSquadIDS.splice(index, 1);
+            }
+            console.log('Leaving   removeFromArray:' + this.currentSquadIDS);
+    }
 
   onClickTest(): void{
         console.log('IN onTest: added players:' + JSON.stringify(this.addedPlayer));
@@ -166,7 +191,9 @@ var index = this.currentSquadIDS.indexOf(pid);
   }
 
   onSubmitTeam(squad:ISquad): void{
-        console.log('IN onSubmitTeam.....Nice Team, dipshit');
+        console.log('IN onSubmitTeam');
+this.submitted = true;
+
     this.squad = {
         week: 5, 
         user: "admin",
@@ -184,17 +211,30 @@ var index = this.currentSquadIDS.indexOf(pid);
 
 this._homeService.addSquad(this.squad);
 
-
+//this._homeService.setEntry(this.squad);
      //console.log('Your Team: ' + JSON.stringify(this.squad));
 
   }
 
   canEnableSubmit(): void{
+console.log("In canEnableSubmit   submitbutton:  "+   document.getElementById('submitTeamBtn'));
+console.log("In canEnableSubmit   editbutton:  "+   document.getElementById('editTeamBtn'));
+
       if(this.QB != null && this.RB1 != null && this.RB2 != null && this.WR1 != null && this.WR2 != null && this.WR3 != null && this.TE != null && this.FLX != null && this.DEF != null){
-        (<HTMLInputElement> document.getElementById('submitTeamBtn')).disabled = false;
+        if(document.getElementById('submitTeamBtn')!=null){
+            (<HTMLInputElement> document.getElementById('submitTeamBtn')).disabled = false;
+        }
+        else if(document.getElementById('editTeamBtn')!=null){
+            (<HTMLInputElement> document.getElementById('editTeamBtn')).disabled = false;
+        }
       }
       else{
-          (<HTMLInputElement> document.getElementById('submitTeamBtn')).disabled = true;
+            if( document.getElementById('submitTeamBtn')!=null){
+            (<HTMLInputElement> document.getElementById('submitTeamBtn')).disabled = true;
+            }
+            else if(document.getElementById('editTeamBtn')!=null){
+            (<HTMLInputElement> document.getElementById('editTeamBtn')).disabled = true;
+        }
       }
   }
 

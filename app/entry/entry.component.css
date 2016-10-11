@@ -27,10 +27,21 @@ font-size: 16px;
 vertical-align: middle;
 }
 
-body{
-    margin-top: 75px;
-    background-color: white; 
-    
+div .week{
+    margin-top: 40px;
+    border-color: transparent;
+    background-color: transparent !important;
+}
+
+#topRow{
+    border-color: transparent;
+    box-sizing: unset;
+}
+
+#weekFilterTable{
+  border-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
 }
 
 .btn-danger{
@@ -39,6 +50,7 @@ width: 50px;
 }
 
 .tableContainer{
+    margin-top: 10px;
     border:2px solid #d3d3d3;
     border-radius: 5px;
  background-color: white; 

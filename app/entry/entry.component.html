@@ -1,4 +1,24 @@
-<body>
+
+
+  <div class='week' > 
+    <table id='weekFilterTable' class='tableNoBorders' >
+                <thead id="topFilters">
+
+                    <tr id="topRow">
+                  <th><select class='form-control' name ="week" form = "weekForm" [(ngModel)]='weekFilter' placeholder="Week" default = "5">
+                    <option value="" disabled selected>Week</option>
+                    <option value="1">Week 1</option>
+                    <option value="2">Week 2</option>
+                    <option value="3">Week 3</option>
+                    <option value="4">Week 4</option>
+                    <option value="5">Week 5</option>
+                    <option value="6">Week 6</option>
+                </select>  </th>
+                    </tr>
+
+</thead>
+</table>
+</div>
 <div class='tableContainer' >
     <table id='entryTable' resizeable mode="resizeMode" class='table table-striped table-condensed' >
                 <thead>
@@ -10,66 +30,59 @@
                     </tr>
                 </thead>           
                 <tbody>
-             <!-- <tr *ngFor="let player of squad"> -->
-              <!--    <tr>
+                 <tr>
                    <td class="col-xs-1" style="text-align:center">QB</td>
-                   <td class="col-xs-1" style="text-align:center">{{addedSquad?.QB?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{addedSquad?.QB?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{addedSquad?.QB?.weekPts}}</td>
-                 </tr> -->
-                  <tr>
-                   <td class="col-xs-1" style="text-align:center">QB</td>
-                   <td class="col-xs-1" style="text-align:center">{{QB?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{QB?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{QB?.weekPts}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.QB?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.QB?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.QB?.weekPts}}</td>
                  </tr>
                   <tr>
                    <td class="col-xs-1" style="text-align:center">RB</td>
-                   <td class="col-xs-1" style="text-align:center">{{addedSquad?.RB1?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{addedSquad?.RB1?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{addedSquad?.RB1?.weekPts}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.RB1?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.RB1?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.RB1?.weekPts}}</td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">RB</td>
-                    <td class="col-xs-1" style="text-align:center">{{RB2?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{RB2?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{RB2?.weekPts}}</td>
+                    <td class="col-xs-1" style="text-align:center">{{entry?.RB2?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.RB2?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.RB2?.weekPts}}</td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">WR</td>
-                    <td class="col-xs-1" style="text-align:center">{{WR1?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR1?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR1?.weekPts}}</td>
+                    <td class="col-xs-1" style="text-align:center">{{entry?.WR1?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR1?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR1?.weekPts}}</td>
                 </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">WR</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR2?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR2?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR2?.weekPts}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR2?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR2?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR2?.weekPts}}</td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">WR</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR3?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR3?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{WR3?.weekPts}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR3?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR3?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.WR3?.weekPts}}</td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">TE</td>
-                   <td class="col-xs-1" style="text-align:center">{{TE?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{TE?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{TE?.weekPts}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.TE?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.TE?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.TE?.weekPts}}</td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">Flex</td>
-                <td class="col-xs-1" style="text-align:center">{{FLX?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{FLX?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{FLX?.weekPts}}</td>
+                <td class="col-xs-1" style="text-align:center">{{entry?.FLX?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.FLX?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.FLX?.weekPts}}</td>
                 </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">DEF</td>
-                    <td class="col-xs-1" style="text-align:center">{{DEF?.name}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{DEF?.teamAbbr}}</td>
-                   <td class="col-xs-1" style="text-align:center">{{DEF?.weekPts}}</td>
+                    <td class="col-xs-1" style="text-align:center">{{entry?.DEF?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.DEF?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{entry?.DEF?.weekPts}}</td>
                 </tr> 
                 <tr>
                   <td></td><td></td><td class='totalPoints'>Total Points:</td><td class='totalPointsNum'> 0.0</td>
@@ -84,5 +97,5 @@
                 <button id='submitTeamBtn' class='btn btn-primary' (click)='alert("Nice Team, asshole")'> Submit Team</button>
                 </div>
             </div> -->
-        </body>
+
 

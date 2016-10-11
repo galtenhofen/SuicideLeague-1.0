@@ -11,7 +11,9 @@ import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class HomeService {
   private _playerUrl = 'http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2016&week=5&format=json';
-        
+  private _savedEntry= 'app/saved/squad.json'
+  private _newSavedEntry= 'app/saved/entry.json'
+
   loading:boolean; 
 
   constructor(private _http: Http){ this.loading=false; }
@@ -21,9 +23,12 @@ export class HomeService {
   public addedSquad = new Subject<ISquad>();
 //private addedPlayer: IPlayer;
 
+  currentEntry:ISquad;
+  currentEntryJSON:JSON;
+
   // Observable string streams
   addPlayer$ = this.addedPlayer.asObservable();
-    addSquad$ = this.addedSquad.asObservable();
+  addSquad$ = this.addedSquad.asObservable();
   // Service message commands
   addPlayer(player: IPlayer) {
       console.log('Adding Player: '+ JSON.stringify(player));
@@ -35,10 +40,43 @@ export class HomeService {
     addSquad(squad: ISquad) {
      // console.log('Adding Player: '+ JSON.stringify(player));
     this.addedSquad.next(squad);
+    
+    //using this until it can be replaced with database calls
+    this.currentEntry = squad;
+    
+    
 
-    console.log('IN HomeService  addedSquad: '+ JSON.stringify(squad));
   }
- 
+/*
+  getEntry(): Observable<ISquad>{
+    console.log('IN getEntry ');
+    return this._http.get(this._newSavedEntry) 
+    .finally( () => this.loading = false)
+                    .map((response: Response) => <ISquad>response.json())
+                    //.do(data => console.log("IN getResponse:  " + JSON.stringify(data)))
+                    .catch(this.throwStatus)
+} 
+
+ setEntry(entry:ISquad){
+   console.log('IN setEntry');
+                let body = JSON.stringify(entry);
+                let headers = new Headers({ 'Content-Type': 'application/json' });
+                let options = new RequestOptions({ headers: headers });
+
+                return this._http.post(this._newSavedEntry , body, options)
+                    .do(data => console.log("POST Response: " + JSON.stringify(data)))
+                    .map(this.checkResponseStatus)
+                    .catch(this.throwStatus);
+ }
+ */
+
+getEntry():ISquad{
+    return this.currentEntry
+    
+} 
+
+
+
   getResponse(): Observable<IResponse>{ 
                      console.log("IN getResponse -   URL: " +this._playerUrl);
                      return this._http.get(this._playerUrl) 

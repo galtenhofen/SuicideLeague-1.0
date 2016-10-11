@@ -15,6 +15,10 @@ export class EntryComponent implements OnInit {
     addedPlayer: IPlayer; 
     subscription: Subscription;
     addedSquad: ISquad;
+    loading: boolean = false;
+
+    entry: ISquad;
+    errorMessage: string;
 
     QB: IPlayer;
     RB1: IPlayer;
@@ -37,6 +41,17 @@ this.addedSquad = null;
   }
 ngOnInit(): any{
     console.log('IN  OnInit');
+
+this.entry=this._homeService.getEntry();
+   /* this.loading = true;
+          this._homeService.getEntry()
+                .subscribe(
+                    response => this.entry = response,
+                    error => this.errorMessage = <any>error,
+                    //() => (this.loading = this._orfileService.loading));
+                    () => (this.onRequestComplete()));
+*/
+
     }
 
   ngOnDestroy() {
@@ -50,4 +65,12 @@ ngOnInit(): any{
 
  }
 
+
+ onRequestComplete(){
+    this.loading = this._homeService.loading;
+   // this.offense = [];
+
+    // this.offense = this.players.filter(player => player.position != "DB" && player.position != "DL" && player.position != "LB");
+
+    }
 }

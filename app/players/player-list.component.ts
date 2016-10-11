@@ -163,7 +163,7 @@ onClickrefreshPlayerList(): void{
     this.loading = this._homeService.loading;
     this.offense = [];
 
-     this.offense = this.players.filter(player => player.position != "DB" && player.position != "DL" && player.position != "LB");
+     this.offense = this.players.filter(player => player.position != "DB" && player.position != "DL" && player.position != "LB" && player.position != "K");
 
     }
 

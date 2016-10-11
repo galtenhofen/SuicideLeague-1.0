@@ -50,6 +50,7 @@ constructor(private _homeService: HomeService) {
   this.subscription = _homeService.addSquad$.subscribe(
      squad=> { 
        this.addEntry(squad);
+       this.updateResults();
   });
 
   }

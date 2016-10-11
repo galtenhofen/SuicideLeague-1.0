@@ -1,4 +1,4 @@
-<body>
+<div class="fakeBody">
 <div class='tableContainer' >
     <table id='squadTable' resizeable mode="resizeMode" class='table table-striped table-hover table-condensed' >
                 <thead>
@@ -17,68 +17,69 @@
                    <td class="col-xs-1" style="text-align:center">{{QB?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{QB?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{QB?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger' (click)='onClickRemovePlayer("Q",QB.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="QB?.id !=null" class='btn btn-danger' (click)='onClickRemovePlayer("Q",QB.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">RB</td>
                    <td class="col-xs-1" style="text-align:center">{{RB1?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{RB1?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{RB1?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger'  (click)='onClickRemovePlayer("R1",RB1.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="RB1?.id !=null" class='btn btn-danger'  (click)='onClickRemovePlayer("R1",RB1.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">RB</td>
                     <td class="col-xs-1" style="text-align:center">{{RB2?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{RB2?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{RB2?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger' (click)='onClickRemovePlayer("R2",RB2.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="RB2?.id !=null" class='btn btn-danger' (click)='onClickRemovePlayer("R2",RB2.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">WR</td>
                     <td class="col-xs-1" style="text-align:center">{{WR1?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{WR1?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{WR1?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger'  (click)='onClickRemovePlayer("W1",WR1.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="WR1?.id !=null" class='btn btn-danger'  (click)='onClickRemovePlayer("W1",WR1.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">WR</td>
                    <td class="col-xs-1" style="text-align:center">{{WR2?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{WR2?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{WR2?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger'  (click)='onClickRemovePlayer("W2",WR2.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="WR2?.id !=null" class='btn btn-danger'  (click)='onClickRemovePlayer("W2",WR2.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">WR</td>
                    <td class="col-xs-1" style="text-align:center">{{WR3?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{WR3?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{WR3?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger'  (click)='onClickRemovePlayer("W3",WR3.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="WR3?.id !=null" class='btn btn-danger'  (click)='onClickRemovePlayer("W3",WR3.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">TE</td>
                    <td class="col-xs-1" style="text-align:center">{{TE?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{TE?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{TE?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger'  (click)='onClickRemovePlayer("T",TE.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="TE?.id !=null" class='btn btn-danger'  (click)='onClickRemovePlayer("T",TE.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">Flex</td>
                 <td class="col-xs-1" style="text-align:center">{{FLX?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{FLX?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{FLX?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger'  (click)='onClickRemovePlayer("F",FLX.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="FLX?.id !=null" class='btn btn-danger'  (click)='onClickRemovePlayer("F",FLX.id)'>X</button></td>
                  </tr> 
                   <tr>
                    <td class="col-xs-1" style="text-align:center">DEF</td>
                     <td class="col-xs-1" style="text-align:center">{{DEF?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{DEF?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{DEF?.weekProjectedPts}}</td>
-                    <td class="col-xs-1" style="text-align:center"><button class='btn btn-danger' (click)='onClickRemovePlayer("D",DEF.id)'>X</button></td>
+                    <td class="col-xs-1" style="text-align:center"><button *ngIf="DEF?.id !=null" class='btn btn-danger' (click)='onClickRemovePlayer("D",DEF.id)'>X</button></td>
                  </tr> 
                 <tr>
                 <td></td><td></td><td></td><td></td>
                 <td>
-                     <button id='submitTeamBtn' class='btn btn-primary' (click)='onSubmitTeam()'> Submit Team</button>
+                     <button id='submitTeamBtn' class='btn btn-primary' (click)='onSubmitTeam()' *ngIf="currentEntry==null" disabled> Submit Team</button>
+                     <button id='editTeamBtn' class='btn btn-primary' (click)='onSubmitTeam()' *ngIf="currentEntry!=null"> Edit Team</button>
                </td>
                 </tr>
                 </tbody>
@@ -89,5 +90,5 @@
                 <button id='submitTeamBtn' class='btn btn-primary' (click)='alert("Nice Team, asshole")'> Submit Team</button>
                 </div>
             </div> -->
-        </body>
+        </div>
 
