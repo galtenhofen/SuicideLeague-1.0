@@ -11,12 +11,18 @@
                 </thead>           
                 <tbody>
              <!-- <tr *ngFor="let player of squad"> -->
-                 <tr>
+              <!--    <tr>
                    <td class="col-xs-1" style="text-align:center">QB</td>
                    <td class="col-xs-1" style="text-align:center">{{addedSquad?.QB?.name}}</td>
                    <td class="col-xs-1" style="text-align:center">{{addedSquad?.QB?.teamAbbr}}</td>
                    <td class="col-xs-1" style="text-align:center">{{addedSquad?.QB?.weekPts}}</td>
-                 </tr> 
+                 </tr> -->
+                  <tr>
+                   <td class="col-xs-1" style="text-align:center">QB</td>
+                   <td class="col-xs-1" style="text-align:center">{{QB?.name}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{QB?.teamAbbr}}</td>
+                   <td class="col-xs-1" style="text-align:center">{{QB?.weekPts}}</td>
+                 </tr>
                   <tr>
                    <td class="col-xs-1" style="text-align:center">RB</td>
                    <td class="col-xs-1" style="text-align:center">{{addedSquad?.RB1?.name}}</td>

@@ -17,8 +17,8 @@ export class HomeService {
   constructor(private _http: Http){ this.loading=false; }
 
   // Observable string sources
-  private addedPlayer = new Subject<IPlayer>();
-    private addedSquad = new Subject<ISquad>();
+  public addedPlayer = new Subject<IPlayer>();
+  public addedSquad = new Subject<ISquad>();
 //private addedPlayer: IPlayer;
 
   // Observable string streams
@@ -36,7 +36,7 @@ export class HomeService {
      // console.log('Adding Player: '+ JSON.stringify(player));
     this.addedSquad.next(squad);
 
-    console.log('IN AppService  addedSquad: '+ JSON.stringify(squad));
+    console.log('IN HomeService  addedSquad: '+ JSON.stringify(squad));
   }
  
   getResponse(): Observable<IResponse>{ 

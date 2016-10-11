@@ -11,9 +11,20 @@ import { Subscription }   from 'rxjs/Subscription';
   styleUrls: ['entry.component.css']
 })
 export class EntryComponent implements OnInit {
+    
     addedPlayer: IPlayer; 
     subscription: Subscription;
     addedSquad: ISquad;
+
+    QB: IPlayer;
+    RB1: IPlayer;
+    RB2: IPlayer;
+    WR1: IPlayer;
+    WR2: IPlayer;
+    WR3: IPlayer;
+    TE: IPlayer;
+    FLX: IPlayer;
+    DEF: IPlayer;
 
   constructor(private _homeService: HomeService) {
    
@@ -26,13 +37,17 @@ this.addedSquad = null;
   }
 ngOnInit(): any{
     console.log('IN  OnInit');
-
     }
 
+  ngOnDestroy() {
+    console.log('IN  OnDestroy');
+  }
+
  addEntry(squad:ISquad): void{
-        console.log('IN addEntry  SQUAD: '+ JSON.stringify(squad));
+        //console.log('IN addEntry  SQUAD: '+ JSON.stringify(squad));
         this.addedSquad = squad;
-        console.log('IN addEntry  this.addedSquad: '+ JSON.stringify(this.addedSquad));
+        this.QB = this.addedSquad.QB;
+
  }
 
 }

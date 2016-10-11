@@ -7,7 +7,8 @@ import { HomeComponent }  from './home/home.component';
     selector: 'nfl-app',
     template: `<div><h1 align="center" style="color:white"> {{pageTitle}} </h1>
     <home-app></home-app>
-    </div>`
+    </div>`,
+    styleUrls: ['./app/app.component.css']
 })
 export class AppComponent { 
 

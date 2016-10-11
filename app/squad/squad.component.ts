@@ -27,8 +27,6 @@ export class SquadComponent implements OnInit {
     DEF: IPlayer;
     currentSquadIDS:string[] = [];
 
-    @Output() addSquad: EventEmitter<ISquad> =
-                             new EventEmitter<ISquad>();
 
   constructor(private _homeService: HomeService) {
    
@@ -200,5 +198,9 @@ this._homeService.addSquad(this.squad);
       }
   }
 
+ ngOnDestroy() {
+    // prevent memory leak when component destroyed
+    this.subscription.unsubscribe();
+  }
 
 }
